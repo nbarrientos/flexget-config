@@ -16,6 +16,10 @@ tasks:
     rss: "https://example.com/rss.php"
     accept_all: yes
     template: tvshows
+    pushbullet:
+      apikey: APIKEY
+      title: "Torrent added"
+      body: "{{title}}"
 
   cleanup:
     clean_transmission:
@@ -49,4 +53,8 @@ tasks:
         - sample
     set:
       output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows
+    pushbullet:
+      apikey: APIKEY
+      title: "Torrent extracted"
+      body: "{{location}}"
     exec: mkdir -p {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && unrar e -r -o- {{ location }} {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && cp {{ location | pathdir }}/*.nfo {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && /bin/bash /home/xbian/.flexget/xbmc-upd.sh
