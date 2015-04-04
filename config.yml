@@ -1,0 +1,49 @@
+templates:
+  tvshows:
+    exists_series:
+      - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
+      - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/incomplete
+    transmission:
+      host: localhost
+      port: 9091
+      username: user
+      password: passwd
+      addpaused: no
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
+
+tasks:
+  rtt:
+    rss: "https://example.com/rss.php"
+    accept_all: yes
+    template: tvshows
+
+  cleanup:
+    clean_transmission:
+      host: localhost
+      port: 9091
+      username: user
+      password: passwd
+      finished_for: 7 days
+      min_ratio: 1
+      delete_files: yes
+
+  unpack:
+    find:
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
+      recursive: true
+      regexp: .*\.(rar)$
+    accept_all: true
+    only_new: yes
+    seen: local
+    require_field: series_name
+    all_series: yes
+    series:
+      settings:
+        series:
+          parse_only: true
+    regexp:
+      reject:
+        - sample
+    set:
+      output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows
+    exec: mkdir -p {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && unrar e -r -o- {{ location }} {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && cp {{ location | pathdir }}/*.nfo {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }}
