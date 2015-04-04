@@ -37,8 +37,10 @@ tasks:
     only_new: yes
     seen: local
     require_field: series_name
-    all_series: yes
     series:
+      series:
+        - Series One
+        - Series Two
       settings:
         series:
           parse_only: true
