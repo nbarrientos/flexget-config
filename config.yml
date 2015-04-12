@@ -41,12 +41,8 @@ tasks:
     only_new: yes
     seen: local
     require_field: series_name
-    series:
-      include:
-        - tvshows.yaml
-      settings:
-        series:
-          parse_only: true
+    include:
+      - tvshows.yaml
     regexp:
       reject:
         - sample
