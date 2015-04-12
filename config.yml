@@ -1,3 +1,4 @@
+secrets: secrets.yaml
 templates:
   tvshows:
     exists_series:
@@ -6,18 +7,18 @@ templates:
     transmission:
       host: localhost
       port: 9091
-      username: user
-      password: passwd
+      username: '{{ secrets.transmission.user }}'
+      password: '{{ secrets.transmission.passwd }}'
       addpaused: no
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
 
 tasks:
   rtt:
-    rss: "https://example.com/rss.php"
+    rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={{ secrets.rtt.passkey }}"
     accept_all: yes
     template: tvshows
     pushbullet:
-      apikey: APIKEY
+      apikey: '{{ secrets.pb.apikey }}'
       title: "Torrent added"
       body: "{{title}}"
 
@@ -25,13 +26,12 @@ tasks:
     clean_transmission:
       host: localhost
       port: 9091
-      username: user
-      password: passwd
-      finished_for: 7 days
+      username: '{{ secrets.transmission.user }}'
+      password: '{{ secrets.transmission.passwd }}'
+      finished_for: 15 days
       min_ratio: 1
       delete_files: yes
 
-  # https://github.com/sebask/flexget-config/blob/master/config.yml
   unpack:
     find:
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
@@ -42,9 +42,8 @@ tasks:
     seen: local
     require_field: series_name
     series:
-      series:
-        - Series One
-        - Series Two
+      include:
+        - tvshows.yaml
       settings:
         series:
           parse_only: true
@@ -54,7 +53,7 @@ tasks:
     set:
       output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows
     pushbullet:
-      apikey: APIKEY
+      apikey: '{{ secrets.pb.apikey }}'
       title: "Torrent extracted"
       body: "{{location}}"
     exec: mkdir -p {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && unrar e -r -o- {{ location }} {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && cp {{ location | pathdir }}/*.nfo {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && /bin/bash /home/xbian/.flexget/xbmc-upd.sh
