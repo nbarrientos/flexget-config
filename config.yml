@@ -44,9 +44,7 @@ tasks:
     regexp:
       reject:
         - sample
-    set:
-      output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
-    exec: unrar e -r -o- {{location}} {{output_folder}}
+    exec: unrar e -r -o- {{location}} /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
 
   sort:
     priority: 10
@@ -56,8 +54,6 @@ tasks:
     find:
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
       recursive: no
-    set:
-      output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows
     require_field: series_name
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
