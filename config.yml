@@ -1,6 +1,6 @@
 secrets: secrets.yaml
 templates:
-  tvshows:
+  localtransmission:
     exists_series:
       - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
       - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/incomplete
@@ -16,7 +16,7 @@ tasks:
   rtt:
     rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={{secrets.rtt.passkey}}"
     accept_all: yes
-    template: tvshows
+    template: localtransmission
     pushbullet:
       apikey: '{{secrets.pb.apikey}}'
       title: "Torrent added"
