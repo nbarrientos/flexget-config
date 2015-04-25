@@ -33,6 +33,7 @@ tasks:
       delete_files: yes
 
   unpack:
+    priority: 5
     find:
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
       recursive: true
@@ -40,16 +41,30 @@ tasks:
     accept_all: true
     only_new: yes
     seen: local
-    require_field: series_name
-    include:
-      - tvshows.yaml
     regexp:
       reject:
         - sample
     set:
+      output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
+    exec: unrar e -r -o- {{ location }} {{ output_folder }}
+
+  sort:
+    priority: 10
+    metainfo_series: yes
+    accept_all: yes
+    seen: local
+    find:
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
+      recursive: no
+    set:
       output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows
+    require_field: series_name
+    move:
+      to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
     pushbullet:
       apikey: '{{ secrets.pb.apikey }}'
-      title: "Torrent extracted"
-      body: "{{location}}"
-    exec: mkdir -p {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && unrar e -r -o- {{ location }} {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && cp {{ location | pathdir }}/*.nfo {{ output_folder }}/{{ series_name|replace(' ','\ ') }}/Season\ {{ series_season }} && /bin/bash /home/xbian/.flexget/xbmc-upd.sh
+      title: "A new episode is ready"
+      body: "{{location|pathname}}"
+    exec:
+      on_exit:
+        phase: /bin/bash /home/xbian/.flexget/xbmc-upd.sh
