@@ -7,18 +7,18 @@ templates:
     transmission:
       host: localhost
       port: 9091
-      username: '{{ secrets.transmission.user }}'
-      password: '{{ secrets.transmission.passwd }}'
+      username: '{{secrets.transmission.user}}'
+      password: '{{secrets.transmission.passwd}}'
       addpaused: no
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
 
 tasks:
   rtt:
-    rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={{ secrets.rtt.passkey }}"
+    rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={{secrets.rtt.passkey}}"
     accept_all: yes
     template: tvshows
     pushbullet:
-      apikey: '{{ secrets.pb.apikey }}'
+      apikey: '{{secrets.pb.apikey}}'
       title: "Torrent added"
       body: "{{title}}"
 
@@ -26,8 +26,8 @@ tasks:
     clean_transmission:
       host: localhost
       port: 9091
-      username: '{{ secrets.transmission.user }}'
-      password: '{{ secrets.transmission.passwd }}'
+      username: '{{secrets.transmission.user}}'
+      password: '{{secrets.transmission.passwd}}'
       finished_for: 15 days
       min_ratio: 1
       delete_files: yes
@@ -46,7 +46,7 @@ tasks:
         - sample
     set:
       output_folder: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
-    exec: unrar e -r -o- {{ location }} {{ output_folder }}
+    exec: unrar e -r -o- {{location}} {{output_folder}}
 
   sort:
     priority: 10
@@ -62,7 +62,7 @@ tasks:
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
     pushbullet:
-      apikey: '{{ secrets.pb.apikey }}'
+      apikey: '{{secrets.pb.apikey}}'
       title: "A new episode is ready"
       body: "{{location|pathname}}"
     exec:
