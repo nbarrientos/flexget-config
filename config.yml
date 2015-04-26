@@ -29,7 +29,7 @@ tasks:
       username: '{{secrets.transmission.user}}'
       password: '{{secrets.transmission.passwd}}'
       finished_for: 15 days
-      min_ratio: 1
+      min_ratio: 2
       delete_files: yes
 
   unpack:
