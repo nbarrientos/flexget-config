@@ -63,4 +63,4 @@ tasks:
       body: "{{location|pathname}}"
     exec:
       on_exit:
-        phase: /bin/bash /home/xbian/.flexget/xbmc-upd.sh
+        phase: /bin/bash /home/osmc/.flexget/xbmc-upd.sh
