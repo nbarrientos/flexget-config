@@ -51,9 +51,10 @@ tasks:
     metainfo_series: yes
     accept_all: yes
     seen: local
-    find:
+    filesystem:
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
-      recursive: no
+      recursive: False
+      retrieve: files
     require_field: series_name
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
