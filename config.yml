@@ -34,7 +34,7 @@ tasks:
 
   unpack:
     priority: 5
-    find:
+    filesystem:
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
       recursive: true
       regexp: .*\.(rar)$
