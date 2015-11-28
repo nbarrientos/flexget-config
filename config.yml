@@ -22,6 +22,15 @@ tasks:
       title: "Torrent added"
       body: "{{title}}"
 
+  kat:
+    rss: "https://kat.cr/bookmarks/rss/torrents/{{secrets.kat.passkey}}/"
+    accept_all: yes
+    template: localtransmission
+    pushbullet:
+      apikey: '{{secrets.pb.apikey}}'
+      title: "Torrent added"
+      body: "{{title}}"
+
   cleanup:
     clean_transmission:
       host: localhost
