@@ -74,3 +74,24 @@ tasks:
     exec:
       on_exit:
         phase: /bin/bash /home/osmc/.flexget/xbmc-upd.sh
+
+  sortmovies:
+    priority: 15
+    imdb_required: yes
+    exists_movie:
+      path: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/Movies"
+      type: files
+      lookup: imdb
+    filesystem:
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
+      recursive: False
+      retrieve: files
+    move:
+      to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
+    pushbullet:
+      apikey: '{{secrets.pb.apikey}}'
+      title: "A new movie is ready"
+      body: "{{imdb_name}}"
+    exec:
+      on_exit:
+        phase: /bin/bash /home/osmc/.flexget/xbmc-upd.sh
