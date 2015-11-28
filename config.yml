@@ -40,7 +40,6 @@ tasks:
       finished_for: 15 days
       min_ratio: 2
       delete_files: yes
-      transmission_seed_limits: yes
 
   unpack:
     priority: 5
