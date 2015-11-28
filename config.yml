@@ -78,6 +78,11 @@ tasks:
   sortmovies:
     priority: 15
     imdb_required: yes
+    imdb:
+      accept_languages:
+        - english
+        - french
+        - spanish
     exists_movie:
       path: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
       type: files
