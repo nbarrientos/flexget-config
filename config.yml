@@ -71,9 +71,6 @@ tasks:
       apikey: '{{secrets.pb.apikey}}'
       title: "A new episode is ready"
       body: "{{location|pathname}}"
-    exec:
-      on_exit:
-        phase: /bin/bash /home/osmc/.flexget/xbmc-upd.sh
 
   sortmovies:
     priority: 15
@@ -93,6 +90,9 @@ tasks:
       apikey: '{{secrets.pb.apikey}}'
       title: "A new movie is ready"
       body: "{{imdb_name}}"
+
+  kodiupdate:
+    priority: 20
     exec:
       on_exit:
         phase: /bin/bash /home/osmc/.flexget/xbmc-upd.sh
