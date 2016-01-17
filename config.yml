@@ -23,7 +23,7 @@ tasks:
       body: "{{title}}"
 
   kat:
-    rss: "https://kat.cr/bookmarks/rss/torrents/{{secrets.kat.passkey}}/"
+    rss: "https://kat.cr/bookmarks/rss/personal/{{secrets.kat.passkey}}/"
     accept_all: yes
     template: localtransmission
     pushbullet:
