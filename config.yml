@@ -31,6 +31,8 @@ tasks:
       finished_for: 30 days
       min_ratio: 2
       delete_files: yes
+      directories:
+        - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
 
   unpack:
     priority: 5
