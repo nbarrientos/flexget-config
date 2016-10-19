@@ -67,7 +67,7 @@ tasks:
 
   sortmovies:
     priority: 15
-    imdb_required: yes
+    require_field: imdb_url
     imdb:
       accept_languages:
         - english
