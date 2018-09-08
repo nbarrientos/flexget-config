@@ -17,13 +17,6 @@ tasks:
     rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey ?}"
     accept_all: yes
     template: localtransmission
-    notify:
-      entries:
-        title: "Torrent added"
-        message: "{{title}}"
-        via:
-          - pushbullet:
-              api_key: '{? pb.apikey ?}'
 
   cleanup:
     clean_transmission:
@@ -65,8 +58,8 @@ tasks:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
     notify:
       entries:
-        title: "A new episode is ready"
-        message: "{{location|pathname}}"
+        title: "A new episode of {{series_name}} is ready!"
+        message: "{{series_id}}"
         via:
           - pushbullet:
               api_key: '{? pb.apikey ?}'
