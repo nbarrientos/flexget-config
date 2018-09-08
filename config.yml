@@ -14,7 +14,7 @@ templates:
 
 tasks:
   rtt:
-    rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey}}"
+    rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey ?}"
     accept_all: yes
     template: localtransmission
     notify:
