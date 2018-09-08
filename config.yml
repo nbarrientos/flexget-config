@@ -23,7 +23,7 @@ tasks:
         message: "{{title}}"
         via:
           - pushbullet:
-            api_key: '{? pb.apikey ?}'
+              api_key: '{? pb.apikey ?}'
 
   cleanup:
     clean_transmission:
@@ -69,7 +69,7 @@ tasks:
         message: "{{location|pathname}}"
         via:
           - pushbullet:
-            api_key: '{? pb.apikey ?}'
+              api_key: '{? pb.apikey ?}'
 
   sortmovies:
     priority: 15
@@ -91,7 +91,7 @@ tasks:
         message: "{{location|pathname}}"
         via:
           - pushbullet:
-            api_key: '{? pb.apikey ?}'
+              api_key: '{? pb.apikey ?}'
 
   kodiupdate:
     priority: 20
