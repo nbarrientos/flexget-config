@@ -1,4 +1,4 @@
-secrets: secrets.yaml
+variables: secrets.yaml
 templates:
   localtransmission:
     exists_series:
@@ -7,18 +7,18 @@ templates:
     transmission:
       host: localhost
       port: 9091
-      username: '{{secrets.transmission.user}}'
-      password: '{{secrets.transmission.passwd}}'
+      username: '{? transmission.user ?}'
+      password: '{? transmission.passwd ?}'
       addpaused: no
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
 
 tasks:
   rtt:
-    rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={{secrets.rtt.passkey}}"
+    rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey}}"
     accept_all: yes
     template: localtransmission
     pushbullet:
-      apikey: '{{secrets.pb.apikey}}'
+      apikey: '{? pb.apikey ?}'
       title: "Torrent added"
       body: "{{title}}"
 
@@ -26,8 +26,8 @@ tasks:
     clean_transmission:
       host: localhost
       port: 9091
-      username: '{{secrets.transmission.user}}'
-      password: '{{secrets.transmission.passwd}}'
+      username: '{? transmission.user ?}'
+      password: '{? transmission.passwd ?}'
       finished_for: 30 days
       min_ratio: 2
       delete_files: yes
@@ -61,7 +61,7 @@ tasks:
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
     pushbullet:
-      apikey: '{{secrets.pb.apikey}}'
+      apikey: '{? pb.apikey ?}'
       title: "A new episode is ready"
       body: "{{location|pathname}}"
 
@@ -80,7 +80,7 @@ tasks:
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
     pushbullet:
-      apikey: '{{secrets.pb.apikey}}'
+      apikey: '{? pb.apikey ?}'
       title: "A new movie is ready"
       body: "{{imdb_name}}"
 
