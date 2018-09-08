@@ -17,10 +17,13 @@ tasks:
     rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey}}"
     accept_all: yes
     template: localtransmission
-    pushbullet:
-      apikey: '{? pb.apikey ?}'
-      title: "Torrent added"
-      body: "{{title}}"
+    notify:
+      entries:
+        title: "Torrent added"
+        message: "{{title}}"
+        via:
+          - pushbullet:
+            api_key: '{? pb.apikey ?}'
 
   cleanup:
     clean_transmission:
@@ -60,10 +63,13 @@ tasks:
     require_field: series_name
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
-    pushbullet:
-      apikey: '{? pb.apikey ?}'
-      title: "A new episode is ready"
-      body: "{{location|pathname}}"
+    notify:
+      entries:
+        title: "A new episode is ready"
+        message: "{{location|pathname}}"
+        via:
+          - pushbullet:
+            api_key: '{? pb.apikey ?}'
 
   sortmovies:
     priority: 15
@@ -79,10 +85,13 @@ tasks:
       retrieve: files
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
-    pushbullet:
-      apikey: '{? pb.apikey ?}'
-      title: "A new movie is ready"
-      body: "{{imdb_name}}"
+    notify:
+      entries:
+        title: "A new movie is ready"
+        message: "{{location|pathname}}"
+        via:
+          - pushbullet:
+            api_key: '{? pb.apikey ?}'
 
   kodiupdate:
     priority: 20
