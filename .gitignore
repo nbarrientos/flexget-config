@@ -1,4 +1,7 @@
 secrets.yaml
 tvshows.yaml
 *.log.*
+*.log
 *.sqlite
+*.json
+*.json.*
