@@ -50,9 +50,12 @@ tasks:
     accept_all: yes
     seen: local
     filesystem:
-      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
-      recursive: False
+      path:
+        - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
+        - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
+      recursive: 2
       retrieve: files
+      regexp: '.*\.(avi|mkv|mp4|m4v)$'
     require_field: series_name
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
