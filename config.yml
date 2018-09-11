@@ -27,6 +27,12 @@ templates:
         via:
           - pushbullet:
               api_key: '{? pb.apikey ?}'
+  refreshkodi:
+    kodi_library:
+      action: scan
+      category: video
+      url: http://localhost
+      port: 80
 
 tasks:
   rtt:
@@ -73,7 +79,9 @@ tasks:
     require_field: series_name
     copy:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
-    template: notifyseries
+    template:
+      - notifyseries
+      - refreshkodi
 
   sortseries_extracted:
     priority: 10
@@ -88,7 +96,9 @@ tasks:
     require_field: series_name
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Shows/{{series_name}}/Season {{series_season}}/"
-    template: notifyseries
+    template:
+      - notifyseries
+      - refreshkodi
 
   sortmovies:
     priority: 15
@@ -105,7 +115,9 @@ tasks:
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
     copy:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
-    template: notifymovies
+    template:
+      - notifymovies
+      - refreshkodi
 
   sortmovies_extracted:
     priority: 15
@@ -122,10 +134,6 @@ tasks:
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
-    template: notifymovies
-
-  kodiupdate:
-    priority: 20
-    exec:
-      on_exit:
-        phase: /bin/bash /home/osmc/.flexget/kodi-update-library.sh
+    template:
+      - notifymovies
+      - refreshkodi
