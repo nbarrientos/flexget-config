@@ -66,8 +66,7 @@ tasks:
     accept_all: yes
     seen: local
     filesystem:
-      path:
-        - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
       recursive: 2
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
@@ -82,8 +81,7 @@ tasks:
     accept_all: yes
     seen: local
     filesystem:
-      path:
-        - /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
       recursive: false
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
