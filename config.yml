@@ -19,6 +19,15 @@ templates:
         via:
           - pushbullet:
               api_key: '{? pb.apikey ?}'
+  notifymovies:
+    notify:
+      entries:
+        title: "A new movie is ready!"
+        message: "{{imdb_name}}"
+        via:
+          - pushbullet:
+              api_key: '{? pb.apikey ?}'
+
 tasks:
   rtt:
     rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey ?}"
@@ -97,13 +106,7 @@ tasks:
       retrieve: files
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
-    notify:
-      entries:
-        title: "A new movie is ready"
-        message: "{{location|pathname}}"
-        via:
-          - pushbullet:
-              api_key: '{? pb.apikey ?}'
+    template: notifymovies
 
   kodiupdate:
     priority: 20
