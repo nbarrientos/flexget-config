@@ -128,4 +128,4 @@ tasks:
     priority: 20
     exec:
       on_exit:
-        phase: /bin/bash /home/osmc/.flexget/xbmc-upd.sh
+        phase: /bin/bash /home/osmc/.flexget/kodi-update-library.sh
