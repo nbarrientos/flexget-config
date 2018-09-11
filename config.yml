@@ -99,7 +99,7 @@ tasks:
         - french
         - spanish
     filesystem:
-      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/downloads
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/torrent/downloads
       recursive: 2
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
