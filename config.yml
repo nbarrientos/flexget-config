@@ -41,6 +41,7 @@ tasks:
     template: localtransmission
 
   cleanup:
+    no_entries_ok: yes
     clean_transmission:
       host: localhost
       port: 9091
@@ -68,6 +69,7 @@ tasks:
 
   sortseries:
     priority: 10
+    no_entries_ok: yes
     metainfo_series: yes
     accept_all: yes
     seen: local
@@ -85,6 +87,7 @@ tasks:
 
   sortseries_extracted:
     priority: 10
+    no_entries_ok: yes
     metainfo_series: yes
     accept_all: yes
     seen: local
@@ -102,6 +105,7 @@ tasks:
 
   sortmovies:
     priority: 15
+    no_entries_ok: yes
     require_field: imdb_url
     imdb:
       accept_languages:
@@ -121,6 +125,7 @@ tasks:
 
   sortmovies_extracted:
     priority: 15
+    no_entries_ok: yes
     require_field: imdb_url
     imdb:
       accept_languages:
