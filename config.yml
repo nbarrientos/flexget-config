@@ -101,9 +101,27 @@ tasks:
         - french
         - spanish
     filesystem:
+      path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/downloads
+      recursive: 2
+      retrieve: files
+      regexp: '.*\.(avi|mkv|mp4|m4v)$'
+    copy:
+      to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
+    template: notifymovies
+
+  sortmovies_extracted:
+    priority: 15
+    require_field: imdb_url
+    imdb:
+      accept_languages:
+        - english
+        - french
+        - spanish
+    filesystem:
       path: /media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/unsorted
       recursive: False
       retrieve: files
+      regexp: '.*\.(avi|mkv|mp4|m4v)$'
     move:
       to: "/media/05b91400-5855-4e9d-980c-b9e4f20f29dc/data/Movies"
     template: notifymovies
