@@ -36,6 +36,7 @@ templates:
 
 tasks:
   rtt:
+    no_entries_ok: yes
     rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey ?}"
     accept_all: yes
     template: localtransmission
