@@ -61,7 +61,7 @@ tasks:
     notify:
       entries:
         title: "A new episode of {{series_name}} is ready!"
-        message: "{{series_id}}"
+        message: "{{series_id}} ({{quality}})"
         via:
           - pushbullet:
               api_key: '{? pb.apikey ?}'
