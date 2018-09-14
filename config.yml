@@ -45,7 +45,7 @@ tasks:
     no_entries_ok: yes
     accept_all: yes
     clean_transmission:
-      host: localhost
+      host: '{? transmission.host ?}'
       port: 9091
       username: '{? transmission.user ?}'
       password: '{? transmission.passwd ?}'
