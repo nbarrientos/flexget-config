@@ -5,7 +5,7 @@ templates:
       - "{? paths.base ?}/torrent/downloads"
       - "{? paths.base ?}/torrent/incomplete"
     transmission:
-      host: localhost
+      host: '{? transmission.host ?}'
       port: 9091
       username: '{? transmission.user ?}'
       password: '{? transmission.passwd ?}'
