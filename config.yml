@@ -52,6 +52,7 @@ tasks:
       finished_for: 30 days
       min_ratio: 2
       delete_files: yes
+      preserve_tracker: revolutiontt
 
   unpack:
     priority: 5
