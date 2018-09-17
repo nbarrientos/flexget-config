@@ -52,8 +52,6 @@ tasks:
       finished_for: 30 days
       min_ratio: 2
       delete_files: yes
-      directories:
-        - "{? paths.base ?}/torrent/downloads"
 
   unpack:
     priority: 5
