@@ -10,7 +10,7 @@ templates:
       username: '{? transmission.user ?}'
       password: '{? transmission.passwd ?}'
       addpaused: no
-      path: "{? paths.base ?}/torrent/downloads"
+      path: "{? paths.transmission_base ?}/torrent/downloads"
   notifyseries:
     notify:
       entries:
