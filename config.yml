@@ -41,6 +41,7 @@ templates:
           account: '{? trakt.account ?}'
           list: get
           type: shows
+          strip_dates: yes
       settings:
         quality: 720p+
 
