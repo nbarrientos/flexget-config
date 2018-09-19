@@ -60,6 +60,7 @@ tasks:
       account: '{? trakt.account ?}'
       list: get
       type: episodes
+      strip_dates: yes
     accept_all: yes
     set_series_begin: yes
     list_remove:
