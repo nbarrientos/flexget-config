@@ -33,6 +33,16 @@ templates:
       category: video
       url: '{? kodi.url ?}'
       port: 80
+  from_trakt:
+    configure_series:
+      from:
+        trakt_list:
+          username: '{? trakt.user ?}'
+          account: '{? trakt.account ?}'
+          list: get
+          type: shows
+      settings:
+        quality: 720p+
 
 tasks:
   rtt:
@@ -40,6 +50,20 @@ tasks:
     rss: "https://revolutiontt.me/rss.php?feed=dl&bookmarks=on&passkey={? rtt.passkey ?}"
     accept_all: yes
     template: localtransmission
+
+  publicp2p:
+    discover:
+      what:
+        - next_series_episodes:
+            from_start: true
+      from:
+        - rarbg:
+            category: 41
+        - search_rss:
+            url: https://eztv.ag/ezrss.xml
+    template:
+      - from_trakt
+      - localtransmission
 
   cleanup:
     no_entries_ok: yes
