@@ -37,7 +37,6 @@ templates:
     configure_series:
       from:
         trakt_list:
-          username: '{? trakt.user ?}'
           account: '{? trakt.account ?}'
           list: get
           type: shows
