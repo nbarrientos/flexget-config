@@ -107,7 +107,6 @@ tasks:
       recursive: true
       regexp: .*\.(rar)$
     accept_all: true
-    only_new: yes
     seen: local
     regexp:
       reject:
