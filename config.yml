@@ -51,6 +51,29 @@ tasks:
     accept_all: yes
     template: localtransmission
 
+  # If a single episode is added to the trakt list then
+  # set that one as begin for that series and add the whole
+  # show.
+  setbegin:
+    seen: local
+    trakt_list:
+      account: '{? trakt.account ?}'
+      list: get
+      type: episodes
+    accept_all: yes
+    set_series_begin: yes
+    list_remove:
+      - trakt_list:
+          account: '{? trakt.account ?}'
+          list: get
+          type: episodes
+    list_add:
+      - trakt_list:
+          account: '{? trakt.account ?}'
+          list: get
+          type: shows
+    priority: 20
+
   publicp2p:
     discover:
       what:
