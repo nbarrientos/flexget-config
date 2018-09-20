@@ -81,6 +81,7 @@ tasks:
       from:
         - rarbg:
             category: 41
+            sorted_by: seeders
         - search_rss:
             url: https://eztv.ag/ezrss.xml
     template:
