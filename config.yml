@@ -2,15 +2,15 @@ variables: secrets.yaml
 templates:
   localtransmission:
     exists_series:
-      - "{? paths.base ?}/torrent/downloads"
-      - "{? paths.base ?}/torrent/incomplete"
+      - "{? paths.torrent_base ?}/downloads"
+      - "{? paths.torrent_base ?}/incomplete"
     transmission:
       host: '{? transmission.host ?}'
       port: 9091
       username: '{? transmission.user ?}'
       password: '{? transmission.passwd ?}'
       addpaused: no
-      path: "{? paths.transmission_base ?}/torrent/downloads"
+      path: "{? paths.torrent_base ?}/downloads"
   notifyseries:
     notify:
       entries:
@@ -103,7 +103,7 @@ tasks:
   unpack:
     priority: 5
     filesystem:
-      path: "{? paths.base ?}/torrent/downloads"
+      path: "{? paths.torrent_base ?}/downloads"
       recursive: true
       regexp: .*\.(rar)$
     accept_all: true
@@ -111,7 +111,7 @@ tasks:
     regexp:
       reject:
         - sample
-    exec: unrar e -r -o- "{{location}}" "{? paths.base ?}/data/unsorted"
+    exec: unrar e -r -o- "{{location}}" "{? paths.media_base ?}/unsorted"
 
   sortseries:
     priority: 10
@@ -120,13 +120,13 @@ tasks:
     accept_all: yes
     seen: local
     filesystem:
-      path: "{? paths.base ?}/torrent/downloads"
+      path: "{? paths.torrent_base ?}/downloads"
       recursive: 2
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
     require_field: series_name
     copy:
-      to: "{? paths.base ?}/data/Shows/{{series_name}}/Season {{series_season}}/"
+      to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
     template:
       - notifyseries
       - refreshkodi
@@ -138,13 +138,13 @@ tasks:
     accept_all: yes
     seen: local
     filesystem:
-      path: "{? paths.base ?}/data/unsorted"
+      path: "{? paths.media_base ?}/unsorted"
       recursive: false
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
     require_field: series_name
     move:
-      to: "{? paths.base ?}/data/Shows/{{series_name}}/Season {{series_season}}/"
+      to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
     template:
       - notifyseries
       - refreshkodi
@@ -159,7 +159,7 @@ tasks:
         - french
         - spanish
     filesystem:
-      path: "{? paths.base ?}/torrent/downloads"
+      path: "{? paths.torrent_base ?}/downloads"
       recursive: 2
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
@@ -168,7 +168,7 @@ tasks:
         - sample
         - Sample
     copy:
-      to: "{? paths.base ?}/data/Movies"
+      to: "{? paths.media_base ?}/Movies"
     template:
       - notifymovies
       - refreshkodi
@@ -183,12 +183,12 @@ tasks:
         - french
         - spanish
     filesystem:
-      path: "{? paths.base ?}/data/unsorted"
+      path: "{? paths.media_base ?}/unsorted"
       recursive: False
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
     move:
-      to: "{? paths.base ?}/data/Movies"
+      to: "{? paths.media_base ?}/Movies"
     template:
       - notifymovies
       - refreshkodi
