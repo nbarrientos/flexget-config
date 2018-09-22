@@ -97,7 +97,7 @@ tasks:
       username: '{? transmission.user ?}'
       password: '{? transmission.passwd ?}'
       finished_for: 30 days
-      min_ratio: '{? transmission.min_ratio ?}'
+      min_ratio: 2
       delete_files: yes
       preserve_tracker: revolutiontt
 
