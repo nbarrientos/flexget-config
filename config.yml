@@ -42,7 +42,7 @@ templates:
           type: shows
       settings:
         quality: 720p+
-      identified_by: ep
+        identified_by: ep
 
 tasks:
   rtt:
