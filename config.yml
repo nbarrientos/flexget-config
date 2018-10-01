@@ -41,6 +41,8 @@ templates:
           list: get
           type: shows
       settings:
+        timeframe: 4 hours
+        target: 1080p
         quality: 720p+
         identified_by: ep
 
