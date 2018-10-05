@@ -42,8 +42,8 @@ templates:
           type: shows
       settings:
         timeframe: 4 hours
-        target: 1080p
-        quality: 720p+
+        target: 1080p h264
+        quality: 720p+ h264
         identified_by: ep
 
 tasks:
