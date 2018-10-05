@@ -81,6 +81,7 @@ tasks:
       what:
         - next_series_episodes:
             from_start: true
+      release_estimations: loose
       from:
         - rarbg:
             category: 41
