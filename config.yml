@@ -117,6 +117,7 @@ tasks:
     regexp:
       reject:
         - sample
+        - Sample
     exec: unrar e -r -o- "{{location}}" "{? paths.media_base ?}/unsorted"
 
   sortseries:
