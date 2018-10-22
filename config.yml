@@ -130,6 +130,9 @@ tasks:
       recursive: 2
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
+    regexp:
+      reject:
+        - sample
     require_field: series_name
     copy:
       to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
@@ -148,6 +151,9 @@ tasks:
       recursive: false
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
+    regexp:
+      reject:
+        - sample
     require_field: series_name
     move:
       to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
