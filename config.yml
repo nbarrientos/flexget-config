@@ -165,6 +165,7 @@ tasks:
     priority: 15
     no_entries_ok: yes
     require_field: imdb_url
+    seen: local
     imdb:
       accept_languages:
         - english
@@ -188,6 +189,7 @@ tasks:
     priority: 15
     no_entries_ok: yes
     require_field: imdb_url
+    seen: local
     imdb:
       accept_languages:
         - english
