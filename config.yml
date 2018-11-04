@@ -107,6 +107,12 @@ tasks:
         - search_rss:
             url: "https://revolutiontt.me/rss.php?feed=dl&cat=12&passkey={? rtt.passkey ?}"
     quality: 1080p h264
+    list_match:
+      from:
+        - trakt_list:
+            account: '{? trakt.account ?}'
+            list: get
+            type: movies
     template:
       - localtransmission
 
