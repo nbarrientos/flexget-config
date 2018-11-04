@@ -104,6 +104,7 @@ tasks:
         - rarbg:
             category: 44
             sorted_by: seeders
+        - 1337x: yes
         - search_rss:
             url: "https://revolutiontt.me/rss.php?feed=dl&cat=12&passkey={? rtt.passkey ?}"
     quality: 1080p h264
