@@ -102,7 +102,7 @@ tasks:
             type: movies
       from:
         - rarbg:
-            category: [44, 45]
+            category: 44
             sorted_by: seeders
         - search_rss:
             url: "https://revolutiontt.me/rss.php?feed=dl&cat=12&passkey={? rtt.passkey ?}"
