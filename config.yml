@@ -93,6 +93,23 @@ tasks:
       - from_trakt
       - localtransmission
 
+  publicp2p_movies:
+    discover:
+      what:
+        - trakt_list:
+            account: '{? trakt.account ?}'
+            list: get
+            type: movies
+      from:
+        - rarbg:
+            category: [44, 45]
+            sorted_by: seeders
+        - search_rss:
+            url: "https://revolutiontt.me/rss.php?feed=dl&cat=12&passkey={? rtt.passkey ?}"
+    quality: 1080p h264
+    template:
+      - localtransmission
+
   cleanup:
     no_entries_ok: yes
     accept_all: yes
