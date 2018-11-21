@@ -156,9 +156,10 @@ tasks:
     regexp:
       reject:
         - sample
-    require_field: series_name
+    thetvdb_lookup: yes
+    require_field: tvdb_series_name
     copy:
-      to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
+      to: "{? paths.media_base ?}/Shows/{{tvdb_series_name}}/Season {{series_season}}/"
     template:
       - notifyseries
       - refreshkodi
@@ -177,9 +178,10 @@ tasks:
     regexp:
       reject:
         - sample
-    require_field: series_name
+    thetvdb_lookup: yes
+    require_field: tvdb_series_name
     move:
-      to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
+      to: "{? paths.media_base ?}/Shows/{{tvdb_series_name}}/Season {{series_season}}/"
     template:
       - notifyseries
       - refreshkodi
