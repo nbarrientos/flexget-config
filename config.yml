@@ -157,8 +157,9 @@ tasks:
       reject:
         - sample
     require_field: series_name
+    thetvdb_lookup: yes
     copy:
-      to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
+      to: "{? paths.media_base ?}/Shows/{{tvdb_series_name|default(series_name)}}/Season {{series_season}}/"
     template:
       - notifyseries
       - refreshkodi
@@ -178,8 +179,9 @@ tasks:
       reject:
         - sample
     require_field: series_name
+    thetvdb_lookup: yes
     move:
-      to: "{? paths.media_base ?}/Shows/{{series_name}}/Season {{series_season}}/"
+      to: "{? paths.media_base ?}/Shows/{{tvdb_series_name|default(series_name)}}/Season {{series_season}}/"
     template:
       - notifyseries
       - refreshkodi
