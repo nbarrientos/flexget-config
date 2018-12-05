@@ -127,7 +127,7 @@ tasks:
       finished_for: 30 days
       min_ratio: '{? transmission.min_ratio ?}'
       delete_files: yes
-      preserve_tracker: revolutiontt
+      preserve_tracker: revolutiontt|iptorrents|empirehost
 
   unpack:
     priority: 5
