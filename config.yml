@@ -23,7 +23,7 @@ templates:
     notify:
       entries:
         title: "A new movie is ready!"
-        message: "{{imdb_name}}"
+        message: "{{imdb_name}} ({{quality}})"
         via:
           - pushbullet:
               api_key: '{? pb.apikey ?}'
