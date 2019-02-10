@@ -150,7 +150,7 @@ tasks:
     seen: local
     filesystem:
       path: "{? paths.torrent_base ?}/downloads"
-      recursive: 2
+      recursive: 3
       retrieve: files
       regexp: '.*\.(avi|mkv|mp4|m4v)$'
     regexp:
