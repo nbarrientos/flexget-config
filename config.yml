@@ -9,7 +9,7 @@ templates:
       port: 9091
       username: '{? transmission.user ?}'
       password: '{? transmission.passwd ?}'
-      addpaused: no
+      add_paused: no
       path: "{? paths.torrent_base ?}/downloads"
   notifyseries:
     notify:
