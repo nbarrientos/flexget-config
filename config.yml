@@ -128,6 +128,10 @@ tasks:
       - transmission_ratio < {? transmission.min_ratio ?}: reject
       - transmission_progress == 100: accept
     transmission:
+      host: '{? transmission.host ?}'
+      port: 9091
+      username: '{? transmission.user ?}'
+      password: '{? transmission.passwd ?}'
       action: purge
     regexp:
       reject:
