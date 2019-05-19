@@ -125,7 +125,8 @@ tasks:
       only_complete: yes
     disable: [seen, seen_info_hash]
     if:
-      - transmission_ratio < '{? transmission.min_ratio ?}': reject
+      - transmission_ratio < {? transmission.min_ratio ?}: reject
+      - transmission_progress == 100: accept
     transmission:
       action: purge
     regexp:
