@@ -130,8 +130,8 @@ tasks:
       action: purge
     regexp:
       reject:
-        - revolutiontt|iptorrents|empirehost:
-          from: transmission_trackers
+        - revolutiontt|iptorrents|empirehost
+      from: transmission_trackers
 
   unpack:
     priority: 5
