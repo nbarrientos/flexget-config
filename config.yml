@@ -117,17 +117,21 @@ tasks:
       - localtransmission
 
   cleanup:
-    no_entries_ok: yes
-    accept_all: yes
-    clean_transmission:
+    from_transmission:
       host: '{? transmission.host ?}'
       port: 9091
       username: '{? transmission.user ?}'
       password: '{? transmission.passwd ?}'
-      finished_for: 30 days
-      min_ratio: '{? transmission.min_ratio ?}'
-      delete_files: yes
-      preserve_tracker: revolutiontt|iptorrents|empirehost
+      only_complete: yes
+    disable: [seen, seen_info_hash]
+    if:
+      - transmission_ratio < '{? transmission.min_ratio ?}': reject
+    transmission:
+      action: purge
+    regexp:
+      reject:
+        - revolutiontt|iptorrents|empirehost:
+          from: transmission_trackers
 
   unpack:
     priority: 5
