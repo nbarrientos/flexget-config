@@ -84,6 +84,15 @@ tasks:
             from_start: true
       release_estimations: loose
       from:
+        - iptorrents:
+            rss_key: '{? ipt.rss_key ?}'
+            uid: '{? ipt.uid ?}'
+            password: '{? ipt.password ?}'
+            category:
+              - 5
+              - 99
+              - 23
+              - 22
         - rarbg:
             category: 41
             sorted_by: seeders
@@ -101,6 +110,16 @@ tasks:
             list: get
             type: movies
       from:
+        - iptorrents:
+            rss_key: '{? ipt.rss_key ?}'
+            uid: '{? ipt.uid ?}'
+            password: '{? ipt.password ?}'
+            category:
+              - 101
+              - 90
+              - 48
+              - 20
+              - 100
         - rarbg:
             category: 44
             sorted_by: seeders
