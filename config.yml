@@ -42,7 +42,7 @@ templates:
           type: shows
       settings:
         timeframe: 6 hours
-        target: 2160p h265
+        target: 1080p+ h264+
         quality: 720p+ h264+
         identified_by: ep
         upgrade: yes
