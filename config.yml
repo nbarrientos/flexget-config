@@ -97,7 +97,7 @@ tasks:
             category: 41
             sorted_by: seeders
         - search_rss:
-            url: https://eztv.ag/ezrss.xml
+            url: https://eztv.yt/ezrss.xml
     template:
       - from_trakt
       - localtransmission
