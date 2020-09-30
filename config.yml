@@ -224,6 +224,7 @@ tasks:
         - english
         - french
         - spanish
+        - italian
     filesystem:
       path: "{? paths.torrent_base ?}/downloads"
       recursive: 2
