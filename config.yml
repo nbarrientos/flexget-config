@@ -180,7 +180,7 @@ tasks:
       path: "{? paths.torrent_base ?}/downloads"
       recursive: 3
       retrieve: files
-      regexp: '.*\.(avi|mkv|mp4|m4v)$'
+      regexp: '.*\.(avi|mkv|mp4|m4v|ts)$'
     regexp:
       reject:
         - sample
@@ -202,7 +202,7 @@ tasks:
       path: "{? paths.media_base ?}/unsorted"
       recursive: false
       retrieve: files
-      regexp: '.*\.(avi|mkv|mp4|m4v)$'
+      regexp: '.*\.(avi|mkv|mp4|m4v|ts)$'
     regexp:
       reject:
         - sample
